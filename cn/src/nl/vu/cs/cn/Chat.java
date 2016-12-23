@@ -1,4 +1,4 @@
-package nl.vu.cs.cn;
+package cn.src.nl.vu.cs.cn;
 
 import android.app.Activity;
 import android.os.Bundle;

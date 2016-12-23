@@ -1,5 +1,4 @@
 package cn.src.nl.vu.cs.cn.tcp;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -44,13 +43,6 @@ public class TranmissionControlBlock {
     public short getLocalPort () {
         return localPort;
     }
-
-
-
-
-
-
-
 
 
 

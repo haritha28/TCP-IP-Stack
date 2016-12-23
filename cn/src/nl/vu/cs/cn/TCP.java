@@ -21,6 +21,7 @@ public class TCP {
 	/** The underlying IP stack for this TCP stack. */
     private IP ip;
     private static final short CLIENT_LOCAL_PORT = 1026;
+    protected TranmissionControlBlock tcb;
 
     //private TransmissionControlBlock TCB;
 
@@ -39,6 +40,7 @@ public class TCP {
     	private Socket() {
 
             //Get the port and ip address
+            tcb.setLocalSocketInfo(ip.getLocalAddress(), CLIENT_LOCAL_PORT);
 
 
     	}
@@ -50,6 +52,7 @@ public class TCP {
     	 */
         private Socket(int port) {
 			// TODO Auto-generated constructor stub
+            tcb.setLocalSocketInfo(ip.getLocalAddress(), (short)port);
 
 		}
 
