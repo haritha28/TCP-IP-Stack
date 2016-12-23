@@ -1,8 +1,16 @@
-package nl.vu.cs.cn;
+package cn.src.nl.vu.cs.cn;
 
 import java.io.IOException;
 
-import nl.vu.cs.cn.IP.IpAddress;
+import cn.src.nl.vu.cs.cn.IP.IpAddress;
+
+import java.io.PrintStream;
+
+import java.net.ServerSocket;
+
+import java.net.Socket;
+
+import java.util.Scanner;
 
 /**
  * This class represents a TCP stack. It should be built on top of the IP stack
@@ -12,6 +20,10 @@ public class TCP {
 
 	/** The underlying IP stack for this TCP stack. */
     private IP ip;
+    private static final short CLIENT_LOCAL_PORT = 1026;
+
+    //private TransmissionControlBlock TCB;
+
 
     /**
      * This class represents a TCP socket.
@@ -26,6 +38,9 @@ public class TCP {
     	 */
     	private Socket() {
 
+            //Get the port and ip address
+
+
     	}
 
     	/**
@@ -35,6 +50,7 @@ public class TCP {
     	 */
         private Socket(int port) {
 			// TODO Auto-generated constructor stub
+
 		}
 
 		/**
@@ -47,7 +63,7 @@ public class TCP {
         public boolean connect(IpAddress dst, int port) {
 
             // Implement the connection side of the three-way handshake here.
-        	ip.getLocalAddress();
+
 
             return false;
         }
