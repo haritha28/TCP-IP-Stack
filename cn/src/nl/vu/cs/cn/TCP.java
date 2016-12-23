@@ -67,6 +67,14 @@ public class TCP {
 
             // Implement the connection side of the three-way handshake here.
 
+            if(tcb.state == LISTEN) {
+
+            } else if (tcb.state == CLOSED) {
+
+            } else if (dst == null || port == 0){
+                
+            }
+
 
             return false;
         }
