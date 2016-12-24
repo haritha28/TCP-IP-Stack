@@ -6,6 +6,8 @@ import java.util.Arrays;
 import cn.src.nl.vu.cs.cn.IP;
 import cn.src.nl.vu.cs.cn.TCP;
 
+import java.util.concurrent.locks.Lock;
+
 public class TranmissionControlBlock {
 
     /*Mentions all the
