@@ -4,14 +4,6 @@ import java.io.IOException;
 
 import cn.src.nl.vu.cs.cn.IP.IpAddress;
 
-import java.io.PrintStream;
-
-import java.net.ServerSocket;
-
-import java.net.Socket;
-
-import java.util.Scanner;
-
 /**
  * This class represents a TCP stack. It should be built on top of the IP stack
  * which is bound to a given IP address.
@@ -67,12 +59,15 @@ public class TCP {
 
             // Implement the connection side of the three-way handshake here.
 
-            if(tcb.state == LISTEN) {
+            if(tcb.getState() == TranmissionControlBlock.State.LISTEN) {
+                return false;
 
-            } else if (tcb.state == CLOSED) {
+            } else if (tcb.getState() == TranmissionControlBlock.State.CLOSED) {
+                return false;
 
             } else if (dst == null || port == 0){
-                
+                return false;
+
             }
 
 

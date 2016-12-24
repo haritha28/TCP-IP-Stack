@@ -1,4 +1,5 @@
-package cn.src.nl.vu.cs.cn.tcp;
+package cn.src.nl.vu.cs.cn;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -43,7 +44,18 @@ public class TranmissionControlBlock {
     public short getLocalPort () {
         return localPort;
     }
-
+    /*
+    * GEt the current state
+    * where TCP is in
+    * */
+    public State getState() {
+            lock();
+        try {
+            return State;
+        } finally {
+            unlock();
+        }
+    }
 
 
 }
