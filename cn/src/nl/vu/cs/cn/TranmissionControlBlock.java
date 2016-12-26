@@ -7,6 +7,7 @@ import cn.src.nl.vu.cs.cn.IP;
 import cn.src.nl.vu.cs.cn.TCP;
 
 import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class TranmissionControlBlock {
 
@@ -21,8 +22,10 @@ public class TranmissionControlBlock {
         SYN_SENT,
         ESTABLISHED
     };
+    private State state;
     private IP.IpAddress localAddr;
     private short localPort;
+    private final Lock StateLock = new ReentrantLock();
 
     /**
      * Socket Address
@@ -51,11 +54,11 @@ public class TranmissionControlBlock {
     * where TCP is in
     * */
     public State getState() {
-            lock();
+            StateLock.lock();
         try {
-            return State;
+            return state;
         } finally {
-            unlock();
+            StateLock.unlock();
         }
     }
 

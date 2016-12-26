@@ -14,6 +14,7 @@ public class TCP {
     private IP ip;
     private static final short CLIENT_LOCAL_PORT = 1026;
     protected TranmissionControlBlock tcb;
+    private String TAG = 'TCP';
 
     //private TransmissionControlBlock TCB;
 
@@ -60,12 +61,16 @@ public class TCP {
             // Implement the connection side of the three-way handshake here.
 
             if(tcb.getState() == TranmissionControlBlock.State.LISTEN) {
+                //Send an error message
+                Log.e (TAG,"Error in connection");
                 return false;
 
             } else if (tcb.getState() == TranmissionControlBlock.State.CLOSED) {
+                Log.e (TAG,"Error in connection");
                 return false;
 
             } else if (dst == null || port == 0){
+                Log.e (TAG,"Error in connection");
                 return false;
 
             }
