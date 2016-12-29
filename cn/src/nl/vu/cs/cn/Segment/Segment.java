@@ -44,6 +44,8 @@ public class Segment {
      * */
 
     private boolean isUrg, isAck, isPsh, isRst, isSyn, isFin;
+    private boolean ValidCheckSum;
+    private int length = -1; //Specifies the segment length
 
     /**
      * Get source Address, destAddr
@@ -77,6 +79,18 @@ public class Segment {
         return seqno;
     }
 
+    //Get the last sequence number
+
+    public long getLastSeqno () {
+
+        if (getLen() == 0 ){
+            return seqno;
+        } else {
+
+            return (seqno + getLen());
+        }
+    }
+
     public long getAckno () {
 
         return ackno;
@@ -91,6 +105,22 @@ public class Segment {
 
         return  data;
     }
+
+    public  int getDataLength() {
+
+        if (data == null) {
+
+            return 0;
+        } else {
+            return data.length;
+        }
+    }
+
+    public short getChecksum() {
+
+        return checksum;
+    }
+
 
     /**
      * Set all the Control bits
@@ -126,15 +156,49 @@ public class Segment {
         return isFin;
     }
 
+    public boolean isValidCheckSum () {
 
+        return ValidCheckSum;
+    }
 
+    public int getLen () {
+
+        if (length == -1) {
+
+            length = getDataLength();
+
+            if(isSyn) {
+                length = length + 1;
+            } else {
+                length = length + 1;
+            }
+        }
+
+        return length;
+    }
 
 
 
 
     //Create a new Segment
-    public Segment (IP.IpAddress srcAddr, IP.IpAddress destAddr, short sourcePort, short destPort, long seqno) {
+    public Segment (IP.IpAddress srcAddr, IP.IpAddress destAddr, short sourcePort, short destPort, long seqno, short wnd, long ackno) {
 
+        this.srcAddr = srcAddr;
+        this.destAddr = destAddr;
+        this.sourcePort = sourcePort;
+        this.destPort = destPort;
+        this.seqno = seqno;
+        this.wnd = wnd;
+
+        if (ackno > -1) {
+            this.ackno = ackno % Integer.MAX_VALUE;
+            isAck = true;
+        }
+
+        //every data is set to push mode
+
+        isPsh = true;
+        isRst = false;
 
     }
 
