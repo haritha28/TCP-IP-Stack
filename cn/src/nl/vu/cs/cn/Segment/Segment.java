@@ -92,6 +92,42 @@ public class Segment {
         return  data;
     }
 
+    /**
+     * Set all the Control bits
+     * */
+
+    public boolean isUrg () {
+
+        return isUrg;
+    }
+
+    public boolean isAck () {
+
+        return isAck;
+    }
+
+    public boolean isPsh () {
+
+        return isPsh;
+    }
+
+    public boolean isRst () {
+
+        return isRst;
+    }
+
+    public boolean isSyn () {
+
+        return isSyn;
+    }
+
+    public boolean isFin () {
+
+        return isFin;
+    }
+
+
+
 
 
 
