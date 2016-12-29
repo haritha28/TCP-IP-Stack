@@ -13,10 +13,84 @@ public class Segment {
 
     private IP.IpAddress srcAddr;
     private IP.IpAddress destAddr;
+
+
+    /**
+     * TCP Format
+     * */
+
     private short sourcePort;
     private short destPort;
-
     private long seqno;
+    private long ackno;
+    private long wnd;
+    private short checksum;
+
+    private byte[] data;
+
+    /*
+    * Control bits
+    * */
+
+    public static final short URG_Bit = 1;
+    public static final short ACK_Bit = 1;
+    public static final short PSH_Bit = 1;
+    public static final short RST_Bit = 1;
+    public static final short SYN_Bit = 1;
+    public static final short FIN_Bit = 1;
+
+    /**
+     * Boolean to check the optional bits
+     * */
+
+    private boolean isUrg, isAck, isPsh, isRst, isSyn, isFin;
+
+    /**
+     * Get source Address, destAddr
+     * */
+    public IP.IpAddress getSrcAddr() {
+
+        return srcAddr;
+    }
+
+    public IP.IpAddress getDestAddr() {
+
+        return destAddr;
+    }
+
+    /**
+     * Get Source Port and Dest Port
+     * */
+
+    public short getSourcePort() {
+
+        return sourcePort;
+    }
+
+    public short getDestPort() {
+
+        return destPort;
+    }
+
+    public long getSeqno () {
+
+        return seqno;
+    }
+
+    public long getAckno () {
+
+        return ackno;
+    }
+
+    public long getWnd() {
+
+        return wnd;
+    }
+
+    public byte[] getData () {
+
+        return  data;
+    }
 
 
 
