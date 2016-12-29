@@ -180,8 +180,8 @@ public class Segment {
 
 
 
-    //Create a new Segment
-    public Segment (IP.IpAddress srcAddr, IP.IpAddress destAddr, short sourcePort, short destPort, long seqno, short wnd, long ackno) {
+    //Create a new Segment in TCP layer
+    protected Segment (IP.IpAddress srcAddr, IP.IpAddress destAddr, short sourcePort, short destPort, long seqno, short wnd, long ackno) {
 
         this.srcAddr = srcAddr;
         this.destAddr = destAddr;
