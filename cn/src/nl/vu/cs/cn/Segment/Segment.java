@@ -1,5 +1,7 @@
 package cn.src.nl.vu.cs.cn.Segment;
 
+import java.nio.ByteBuffer;
+
 import cn.src.nl.vu.cs.cn.IP;
 import cn.src.nl.vu.cs.cn.TCP;
 
@@ -201,6 +203,36 @@ public class Segment {
         isRst = false;
 
     }
+
+    //Create a new Segment to process packets from IP Layer
+
+    public Segment(byte[] packet, int srcAddr, int destAddr) {
+
+
+        this.srcAddr = IP.IpAddress.getAddress(srcAddr);
+        this.destAddr = IP.IpAddress.getAddress(destAddr);
+
+        ByteBuffer bb = ByteBuffer.wrap(packet);
+        sourcePort = bb.getShort();
+        destPort = bb.getShort();
+
+        seqno = bb.getInt();
+        ackno = bb.getInt();
+        wnd = bb.getInt();
+
+    }
+
+    //Convert the packets back to string
+
+//    public String toString () {
+//
+//
+//        //appending
+//        StringBuilder sb  = new StringBuilder();
+//
+//
+//
+//    }
 
 
 }
