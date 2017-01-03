@@ -26,6 +26,39 @@ public class SegmentHandler extends SegmentsArriveListener {
 
     public void onSegmentArrive (Segment segment) {
 
+        Log.v (TAG, "Recieved:" + segment.toString());
+
+        if (!segment.isValidCheckSum()) {
+
+            Log.v(TAG,  "Recieved segment with invalid checksum. Dropping segment");
+            return;
+        }
+
+
+        synchronized (tcb) {
+            switch (tcb.getState()) {
+
+                case CLOSED:
+
+                    return ;
+
+                case LISTEN:
+
+                    SegmentArrivesInListenState(segment);
+                    return;
+
+                case SYN_SENT:
+
+                    SegmentArrivesInSynSentState();
+                    return;
+                default:
+
+
+
+
+            }
+        }
+
 
     }
 

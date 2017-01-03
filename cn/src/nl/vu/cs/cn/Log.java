@@ -12,5 +12,9 @@ public class Log {
         return true;
     }
 
+    public static boolean v (final String tag, final String msg) {
+        return true;
+    }
+
 
 }
