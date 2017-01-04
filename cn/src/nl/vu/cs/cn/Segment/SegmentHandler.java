@@ -64,10 +64,37 @@ public class SegmentHandler extends SegmentsArriveListener {
 
     public void SegmentArrivesInListenState (Segment segment) {
 
+        //Recieve client sync and sent sync+ACK
+        //Server is waiting to recieve a SYN message from the client
+
+        if (segment.isAck()) {
+            //recieves an ack which is not necessary
+            Log.v(TAG, "Unkown acknowledgement");
+
+        } else if (segment.isSyn()) {
+            //recieves a SYN from the client
+            //sends back a message with SYN+ACK
+
+
+
+            //server moves to SYN recieved state
+            tcb.enterState(TranmissionControlBlock.State.SYN_RECIEVED);
+        } else {
+
+
+        }
+
 
     }
 
     public void SegmentArrivesInSynSentState () {
+
+        //Recieve SYN, Send ACK
+
+
+
+        //Recieve SYN+ACK , Send ACK
+
 
 
     }
