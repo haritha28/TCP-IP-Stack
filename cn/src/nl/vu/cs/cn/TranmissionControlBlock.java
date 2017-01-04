@@ -9,6 +9,7 @@ import cn.src.nl.vu.cs.cn.TCP;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+
 public class TranmissionControlBlock {
 
     /*Mentions all the
@@ -27,6 +28,8 @@ public class TranmissionControlBlock {
     private short localPort;
     private final Lock StateLock = new ReentrantLock();
 
+    public String TAG =  "TCB";
+
     /**
      * Socket Address
      */
@@ -41,12 +44,14 @@ public class TranmissionControlBlock {
     * Get the Local address from IP class
     * */
     public IP.IpAddress getLocalAddr () {
+
         return localAddr;
     }
     /*
     * Get the Local Port
     * */
     public short getLocalPort () {
+
         return localPort;
     }
     /*
@@ -61,6 +66,28 @@ public class TranmissionControlBlock {
             StateLock.unlock();
         }
     }
+
+    /*
+    * Function to change TCP state
+    * */
+    public synchronized void enterState (State state) {
+
+        StateLock.lock();
+
+        try {
+
+            Log.v(TAG, "Enter State" + state);
+            this.state = state;
+
+            if (state == State.CLOSED) {
+
+            }
+        } finally {
+            StateLock.unlock();
+        }
+
+    }
+
 
 
 }
