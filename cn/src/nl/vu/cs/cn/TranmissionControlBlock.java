@@ -89,6 +89,15 @@ public class TranmissionControlBlock {
     }
 
 
+    /*
+    * Function to get intial sequence number
+    * */
+    public long getIntialSequenceNumber() {
+
+
+    }
+
+
 
 }
 
