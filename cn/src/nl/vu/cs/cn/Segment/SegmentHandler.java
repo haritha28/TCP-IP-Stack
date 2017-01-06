@@ -1,6 +1,8 @@
 package cn.src.nl.vu.cs.cn.Segment;
 
 
+import java.io.IOException;
+
 import cn.src.nl.vu.cs.cn.TCP;
 import cn.src.nl.vu.cs.cn.IP;
 import cn.src.nl.vu.cs.cn.TranmissionControlBlock;
@@ -74,11 +76,25 @@ public class SegmentHandler extends SegmentsArriveListener {
         } else if (segment.isSyn()) {
             //recieves a SYN from the client
             //sends back a message with SYN+ACK
+            //get the sequence number and add one to it.
 
 
 
             //server moves to SYN recieved state
             tcb.enterState(TranmissionControlBlock.State.SYN_RECIEVED);
+
+            long isn = tcb.getIntialSequenceNumber();
+            Segment outgoingSegment =  //have SYN+ACK pack (iss, offset for recieving the next);
+
+            try {
+                //sending
+
+            } catch (IOException e) {
+
+            } finally {
+
+            }
+
         } else {
 
 
