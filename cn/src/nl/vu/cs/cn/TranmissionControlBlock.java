@@ -3,11 +3,14 @@ package cn.src.nl.vu.cs.cn;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 import cn.src.nl.vu.cs.cn.IP;
 import cn.src.nl.vu.cs.cn.TCP;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.TimeUnit;
+import java.util.Random;
 
 
 public class TranmissionControlBlock {
@@ -29,6 +32,9 @@ public class TranmissionControlBlock {
     private final Lock StateLock = new ReentrantLock();
 
     public String TAG =  "TCB";
+
+    private long iss;
+    private long irs;
 
     /**
      * Socket Address
@@ -89,11 +95,39 @@ public class TranmissionControlBlock {
     }
 
 
+    /**
+     * Function to wait for different states
+     * */
+
+    public void waitForStates (TranmissionControlBlock.State state) {
+
+        ArrayList<State> al = new ArrayList();
+
+
+
+    }
+
+
+
+    public void setIntialSequenceNumber (long irs) {
+
+        this.irs = irs;
+    }
+
+
     /*
     * Function to get intial sequence number
+    * This implementation supports only one client one user
     * */
     public long getIntialSequenceNumber() {
 
+        if( iss == 0 ) {
+
+           //we can use nano time and get the last 32 bits
+            iss = System.nanoTime() % Integer.MAX_VALUE;
+        }
+
+        return iss;
 
     }
 
