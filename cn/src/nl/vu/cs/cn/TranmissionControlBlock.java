@@ -35,6 +35,7 @@ public class TranmissionControlBlock {
 
     private long iss;
     private long irs;
+    public long rcv_next;
 
     /**
      * Socket Address
@@ -129,6 +130,15 @@ public class TranmissionControlBlock {
 
         return iss;
 
+    }
+
+    public void setRecieveNext (long rcv_next) {
+
+        this.rcv_next = rcv_next % Integer.MAX_VALUE;
+    }
+
+    public long getRecieveNext () {
+        return rcv_next;
     }
 
 
