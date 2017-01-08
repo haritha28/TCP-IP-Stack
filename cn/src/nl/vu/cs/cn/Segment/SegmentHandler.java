@@ -72,12 +72,16 @@ public class SegmentHandler extends SegmentsArriveListener {
         if (segment.isAck()) {
             //recieves an ack which is not necessary
             Log.v(TAG, "Unkown acknowledgement");
+            //Implementing the connection reset
 
         } else if (segment.isSyn()) {
             //recieves a SYN from the client
-            //sends back a message with SYN+ACK
-            //get the sequence number and add one to it.
 
+            //sends back a message with SYN+ACK
+
+            //get the sequence number and add one to it.
+            tcb.setRecieveNext(segment.getSeqno() +segment.getLen()% Integer. MAX_VALUE);
+            tcb.setIntialSequenceNumber(segment.getSeqno());
 
 
             //server moves to SYN recieved state
@@ -89,7 +93,7 @@ public class SegmentHandler extends SegmentsArriveListener {
             try {
                 //sending
 
-            } catch (IOException e) {
+            } catch () {
 
             } finally {
 
