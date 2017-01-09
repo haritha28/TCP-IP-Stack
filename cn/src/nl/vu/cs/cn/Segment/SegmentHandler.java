@@ -83,7 +83,6 @@ public class SegmentHandler extends SegmentsArriveListener {
             tcb.setRecieveNext(segment.getSeqno() +segment.getLen()% Integer. MAX_VALUE);
             tcb.setIntialSequenceNumber(segment.getSeqno());
 
-
             //server moves to SYN recieved state
             tcb.enterState(TranmissionControlBlock.State.SYN_RECIEVED);
 
@@ -91,12 +90,17 @@ public class SegmentHandler extends SegmentsArriveListener {
             Segment outgoingSegment =  //have SYN+ACK pack (iss, offset for recieving the next);
 
             try {
-                //sending
 
-            } catch () {
+                Log.v(TAG, "Sending: ");
+                ip.ip_send(); //sends the packet
+
+            } catch (IOException ) {
+
+                Log.e(TAG, "Error while sending SYN+ACK")
 
             } finally {
 
+                //goes to the transmission Queue and waits there for retransmission
             }
 
         } else {
