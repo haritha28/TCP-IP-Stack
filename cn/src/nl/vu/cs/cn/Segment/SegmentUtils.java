@@ -11,6 +11,14 @@ public class SegmentUtils {
 
     public static Segment getSYNPacket (TranmissionControlBlock tcb, long seqno, long ack) {
 
+        Segment  segment = new Segment(
+                tcb.getLocalAddr(),
+                tcb.getLocalPort(),
+                seqno );
+
+        //set the IsSYN packet to true
+
+        return segment;
 
     }
 
@@ -27,10 +35,10 @@ public class SegmentUtils {
 
     }
 
-    public static  getFINPacket (TranmissionControlBlock tcb, long seqno, long ack) {
+    public getFINPacket(TranmissionControlBlock tcb, long seqno, long ack) {
 
 
     }
-    
+
 
 }
