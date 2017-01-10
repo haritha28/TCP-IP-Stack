@@ -22,6 +22,11 @@ public class TCP {
 
 
     /**
+     *Fucntion to recieve data
+     * */
+
+
+    /**
      * This class represents a TCP socket.
      *
      */
@@ -105,7 +110,7 @@ public class TCP {
 
             // Read from the socket here.
 
-            return -1;
+            return recieve (buf, offset, maxlen);
         }
 
         /**
@@ -153,6 +158,7 @@ public class TCP {
      * @return a new socket for this stack
      */
     public Socket socket() {
+
         return new Socket();
     }
 
@@ -161,7 +167,12 @@ public class TCP {
      * @param port the port to bind the socket to.
      */
     public Socket socket(int port) {
+
         return new Socket(port);
     }
+
+    /**
+     * Function for sedn
+     */
 
 }
