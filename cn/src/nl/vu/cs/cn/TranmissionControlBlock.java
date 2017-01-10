@@ -24,7 +24,14 @@ public class TranmissionControlBlock {
         LISTEN,
         SYN_RECIEVED,
         SYN_SENT,
-        ESTABLISHED
+        ESTABLISHED,
+        FIN_WAIT_1,
+        FIN_WAIT_2,
+        TIME_WAIT,
+        CLOSE_WAIT,
+        LAST_ACK,
+        CLOSING
+
     };
     private State state;
     private IP.IpAddress localAddr;
