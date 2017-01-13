@@ -111,13 +111,32 @@ public class SegmentHandler extends SegmentsArriveListener {
 
     }
 
-    public void SegmentArrivesInSynSentState () {
+    public void SegmentArrivesInSynSentState (Segment segment) {
 
-        //Recieve SYN, Send ACK
+        if(segment.isAck()) {
+
+
+        } else if () {
+
+        } else {
+
+        }
+
+        if(Segment.isSyn()) {
+
+           //set and recieve next sequence number by the length of this segment
+
+            tcb.setRecieveNext(segment.getSeqno() +segment.getLen()% Integer. MAX_VALUE);
+            tcb.setIntialSequenceNumber(segment.getSeqno());
+
+            tcb.setSendUnacknowldeged(segment.getAckno());
+        }
 
 
 
-        //Recieve SYN+ACK , Send ACK
+
+
+
 
 
 

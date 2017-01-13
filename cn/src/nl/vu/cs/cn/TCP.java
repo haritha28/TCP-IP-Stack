@@ -22,8 +22,78 @@ public class TCP {
 
 
     /**
+     * Function to sent the data
+     * */
+
+    private int send (byte [] buf, int offset, int len) {
+
+        switch(tcb.getState()) {
+
+            case CLOSED:
+                Log.e();
+                return -1;
+
+            case LISTEN:
+                Log.e();
+                return -1;
+
+            case SYN_SENT:
+                //
+                return -1;
+
+            case SYN_RECIEVED:
+                Log.e();
+                return -1;
+
+            case ESTABLISHED:
+
+                return -1;
+
+            case CLOSE_WAIT:
+
+                return -1;
+
+        }
+
+
+    }
+
+
+    /**
      *Fucntion to recieve data
      * */
+
+    private int recieve (byte[] buf, int offset, int maxlen) {
+
+        switch(tcb.getState()) {
+
+            case CLOSED:
+                Log.e();
+                return -1;
+
+            case LISTEN:
+                Log.e();
+                return -1;
+
+            case SYN_SENT:
+                //
+                return -1;
+
+            case SYN_RECIEVED:
+                Log.e();
+                return -1;
+
+            case ESTABLISHED:
+
+                return -1;
+
+            case CLOSE_WAIT:
+
+                return -1;
+
+        }
+
+    }
 
 
     /**
