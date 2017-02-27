@@ -1,5 +1,7 @@
 package cn.src.nl.vu.cs.cn;
 
+import android.content.RestrictionEntry;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -37,6 +39,7 @@ public class TranmissionControlBlock {
     private IP.IpAddress localAddr;
     private short localPort;
     private final Lock StateLock = new ReentrantLock();
+    private final Lock retransmissionLock = new ReentrantLock();
 
     public String TAG =  "TCB";
 
@@ -109,17 +112,52 @@ public class TranmissionControlBlock {
 
     public void waitForStates (TranmissionControlBlock.State state) {
 
-        ArrayList<State> al = new ArrayList();
+        ArrayList<State> acceptableStates = new ArrayList <TranmissionControlBlock.State>(Arrays.asList(state));
 
+        stateLock.lock();
+        try {
+            while (!acceptableStates.contains(state)) {
+
+
+            }
+        }
+
+
+
+
+
+    }
+
+    //waits for the Acknowledgement from the client
+    public void waitForAck (TranmissionControlBlock.State state) {
+        //add a lock
+        retransmissionLock.lock();
+        try {
+            int i ;
+            for (int i = 0 ; i < ; i++ ) {
+                Log.v(TAG, )
+            }
+        }
 
 
     }
 
 
 
+
+    //waits until we recieve all the ack states.
+    public void waitUntilAllAcknowledged () {
+
+        try {
+
+        }
+
+
+    }
     public void setIntialSequenceNumber (long irs) {
 
         this.irs = irs;
+
     }
 
 
