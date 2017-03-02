@@ -68,28 +68,32 @@ public class TCP {
         switch(tcb.getState()) {
 
             case CLOSED:
-                Log.e();
+                Log.e(TAG,"Error message");
                 return -1;
 
             case LISTEN:
-                Log.e();
+                Log.e(TAG,"Error message");
                 return -1;
 
             case SYN_SENT:
-                //
+                Log.e(TAG,"Error message");
                 return -1;
 
             case SYN_RECIEVED:
-                Log.e();
+                Log.e(TAG,"Error message");
                 return -1;
 
             case ESTABLISHED:
-
-                return -1;
+            case FIN_WAIT_1:
+            case FIN_WAIT_2:
+                Log.v(TAG, "queue till segements arrive");
 
             case CLOSE_WAIT:
 
                 return -1;
+
+            default:
+                Log.e(TAG, "connection closing");
 
         }
 
@@ -198,7 +202,7 @@ public class TCP {
 
             // Write to the socket here.
 
-            return -1;
+            return send(buf, offset, len);
         }
 
         /**
