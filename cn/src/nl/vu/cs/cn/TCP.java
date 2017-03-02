@@ -163,6 +163,9 @@ public class TCP {
         public void accept() {
 
             // Implement the receive side of the three-way handshake here.
+            tcb.enterState(TranmissionControlBlock.State.LISTEN);
+            Log.v(TAG, "accept(): waits it get accepted");
+            tcb.waitForStates(TranmissionControlBlock.State.ESTABLISHED);
 
         }
 
