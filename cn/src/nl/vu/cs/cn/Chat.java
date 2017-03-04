@@ -3,7 +3,14 @@ package cn.src.nl.vu.cs.cn;
 import android.app.Activity;
 import android.os.Bundle;
 
+
 public class Chat extends Activity {
+
+
+
+
+
+
 
 	/** Called when the activity is first created. */
 	@Override
