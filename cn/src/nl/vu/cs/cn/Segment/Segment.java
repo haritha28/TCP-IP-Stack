@@ -197,7 +197,7 @@ public class Segment {
             isAck = true;
         }
 
-        //every data is set to push mode
+        //every data is set is pushed into the segment here.
 
         isPsh = true;
         isRst = false;
@@ -218,7 +218,9 @@ public class Segment {
 
         seqno = bb.getInt();
         ackno = bb.getInt();
-        wnd = bb.getInt();
+       // wnd = bb.getInt();
+
+
 
     }
 
