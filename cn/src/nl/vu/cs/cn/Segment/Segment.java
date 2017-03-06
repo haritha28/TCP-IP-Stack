@@ -4,6 +4,7 @@ import java.nio.ByteBuffer;
 
 import cn.src.nl.vu.cs.cn.IP;
 import cn.src.nl.vu.cs.cn.TCP;
+import cn.src.nl.vu.cs.cn.TranmissionControlBlock;
 
 /**
  * Created by haritha on 27/12/16.
@@ -48,6 +49,10 @@ public class Segment {
     private boolean isUrg, isAck, isPsh, isRst, isSyn, isFin;
     private boolean ValidCheckSum;
     private int length = -1; //Specifies the segment length
+
+    public static final short DATA_OFFSET = 5;
+
+    public static final short HEADER_SIZE = DATA_OFFSET * 4;
 
     /**
      * Get source Address, destAddr
@@ -229,12 +234,20 @@ public class Segment {
 //    public String toString () {
 //
 //
-//        //appending
-//        StringBuilder sb  = new StringBuilder();
-//
-//
-//
-//    }
+//        //
 
+    public int setData(byte[] data, int offset, int len) {
+        len = Math.min(TranmissionControlBlock.MAX_SEGMENT_SIZE - HEADER_SIZE, len);
+        this.data = new byte[len];
+        System.arraycopy(data, offset, this.data, 0, len);
+        return len;
+    }
 
+    public int setData(byte [] data) {
+        return setData(data,0,data.length);
+    }
+
+    public int getDataLength() {
+        return (data == null) ? 0 : data.length;
+    }
 }
