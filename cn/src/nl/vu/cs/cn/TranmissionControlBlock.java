@@ -41,6 +41,10 @@ public class TranmissionControlBlock {
     private final Lock StateLock = new ReentrantLock();
     private final Lock retransmissionLock = new ReentrantLock();
 
+    public static final int RETRANSMIT_TIMEOUT_MS = 1000; //maximum retransmission time
+    public static final int  MAX_RETRANSMITS = 5; //maximum number of retransmitts
+    //public static final int
+
     public String TAG =  "TCB";
 
     private long iss;
@@ -128,18 +132,17 @@ public class TranmissionControlBlock {
 
     }
 
-    //waits for the Acknowledgement from the client
+    //waits for the Acknowledgement from the client : stop and wait protocol
     public void waitForAck (TranmissionControlBlock.State state) {
         //add a lock
         retransmissionLock.lock();
         try {
-            int i ;
-            for (int i = 0 ; i < ; i++ ) {
-                Log.v(TAG, )
+            for (int i = 0 ; i <  MAX_RETRANSMITS; i++ ) {
+                Log.v(TAG, "Checking if the packet is acked" );
+                //ignore wait
+
             }
         }
-
-
     }
 
 
@@ -149,7 +152,7 @@ public class TranmissionControlBlock {
     public void waitUntilAllAcknowledged () {
 
         try {
-
+            if(retr)
         }
 
 
@@ -184,6 +187,23 @@ public class TranmissionControlBlock {
 
     public long getRecieveNext () {
         return rcv_next;
+    }
+
+    public int queueDataForTransmission(byte[] buf, int offset, int len) {
+        int i;
+        for (i = 0; i< len i++) {
+            //transmission queue for offset+1
+        }
+        return i;
+    }
+
+    public int queueDataForProcessing(byte[] buf, int offset, int len) {
+        int i;
+        for ( i =0; i< len; i++) {
+            //transmissionququq for len becoming offset+1
+        }
+
+
     }
 
 
