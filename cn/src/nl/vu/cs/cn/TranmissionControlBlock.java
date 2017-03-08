@@ -42,8 +42,9 @@ public class TranmissionControlBlock {
     private final Lock retransmissionLock = new ReentrantLock();
 
     public static final int RETRANSMIT_TIMEOUT_MS = 1000; //maximum retransmission time
-    public static final int  MAX_RETRANSMITS = 5; //maximum number of retransmitts
-    //public static final int
+    public static final int  MAX_RETRANSMITS = 5;//maximum number of retransmitts
+    public static final short IP_HEADER_SIZE = 20; //size of IP address
+    public static final short MAX_SEGMENT_SIZE = 8 * 1024 - IP_HEADER_SIZE; //max size packet
 
     public String TAG =  "TCB";
 
