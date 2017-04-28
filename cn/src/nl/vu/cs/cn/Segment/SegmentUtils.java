@@ -11,13 +11,12 @@ public class SegmentUtils {
 
     public static Segment getSYNPacket (TranmissionControlBlock tcb, long seqno, long ack) {
 
-        Segment  segment = new Segment(
-                tcb.getLocalAddr(),
-                tcb.getLocalPort(),
-                seqno );
+        Segment segment = new Segment(
+                tcb.getLocalAddr(), tcb.getForeignAddr(),
+                tcb.getLocalport(), tcb.getForeignPort(),
+                seq, tcb.getSendWindow());
 
-        //set the IsSYN packet to true
-
+        segment.setIsSyn(true);
         return segment;
 
     }
@@ -25,12 +24,14 @@ public class SegmentUtils {
 
     public static Segment getSYNACKPacket (TranmissionControlBlock tcb, long seqno, long ack) {
 
+        Segment segment = getPacket(tcb,seqno, ack);
+        segment.getIsSYN(true);
+        return segment;
         //get the packet and return the segment is true
-
-
     }
 
     public static Segment getPacket (TranmissionControlBlock tcb, long seqno, long ack) {
+
 
 
     }
