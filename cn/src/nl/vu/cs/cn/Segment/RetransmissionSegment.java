@@ -25,4 +25,13 @@ public class RetransmissionSegment {
     public void increaseRetry () {
         retry++;
     }
+
+    public boolean equals(Object o) {
+        if(o instanceof Segment) {
+            return segment.equals(o);
+        } else if (o instanceof RetransmissionSegment){
+            return segment.equals((RetransmissionSegment)o));
+        }
+        return false;
+    }
 }
