@@ -68,19 +68,19 @@ public class TCP {
         switch(tcb.getState()) {
 
             case CLOSED:
-                Log.e(TAG,"Error message");
+                Log.e(TAG,"Error message", e);
                 return -1;
 
             case LISTEN:
-                Log.e(TAG,"Error message");
+                Log.e(TAG,"Error message", e);
                 return -1;
 
             case SYN_SENT:
-                Log.e(TAG,"Error message");
+                Log.e(TAG,"Error message", e);
                 return -1;
 
             case SYN_RECIEVED:
-                Log.e(TAG,"Error message");
+                Log.e(TAG,"Error message", e);
                 return -1;
 
             case ESTABLISHED:
@@ -93,7 +93,7 @@ public class TCP {
                 return -1;
 
             default:
-                Log.e(TAG, "connection closing");
+                Log.e(TAG, "connection closing", e);
 
         }
 
@@ -143,15 +143,15 @@ public class TCP {
 
             if(tcb.getState() == TranmissionControlBlock.State.LISTEN) {
                 //Send an error message
-                Log.e (TAG,"Error in connection");
+                Log.e (TAG,"Error in connection", e);
                 return false;
 
             } else if (tcb.getState() == TranmissionControlBlock.State.CLOSED) {
-                Log.e (TAG,"Error in connection");
+                Log.e (TAG,"Error in connection", e);
                 return false;
 
             } else if (dst == null || port == 0){
-                Log.e (TAG,"Error in connection");
+                Log.e (TAG,"Error in connection", e);
                 return false;
 
             }

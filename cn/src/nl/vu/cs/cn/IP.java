@@ -159,17 +159,17 @@ public class IP {
      */
     public static final class Packet {
     	/** The source address for the packet. Note the value is stored little-endian. */
-        int source;
+        public int source;
         /** The destination address for the packet. Note the value is stored little-endian. */
-        int destination;
+        public int destination;
         /** The protocol number. */
-        int protocol;
+        public int protocol;
         /** The id for the packet. */
-        int id;
+        public int id;
         /** The data for the packet. May contain garbage beyond length bytes. May be reallocated by the JNI layer. */
-        byte[] data;
+        public byte[] data;
         /** The length of the packet. Possibly less than data.length. */
-        int length;
+        public int length;
 
         public Packet() {
         }

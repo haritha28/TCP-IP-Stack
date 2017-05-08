@@ -1,5 +1,7 @@
 package cn.src.nl.vu.cs.cn;
 
+import java.io.IOException;
+
 /**
  * Created by haritha on 26/12/16.
  */
@@ -8,7 +10,7 @@ package cn.src.nl.vu.cs.cn;
 
 public class Log {
 
-    public static boolean e (final String tag, final String msg) {
+    public static boolean e(final String tag, final String msg, IOException e) {
         return true;
     }
 
@@ -17,4 +19,6 @@ public class Log {
     }
 
 
+    public static void e(String tag, String s) {
+    }
 }
